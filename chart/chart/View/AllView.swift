@@ -21,6 +21,9 @@ struct AllView: View {
     var labels: [Int: String]
     let failedTestDetailsArry = chartData.results?[0].testDetails
     let passedTestDetailsArry = chartData.results?[1].testDetails
+    let col = [
+        GridItem(.adaptive(minimum: 350)),
+    ]
     
     init(data: [String: [String:Int]]){
         
@@ -110,47 +113,46 @@ struct AllView: View {
                             .frame(width: 100, alignment: .leading)
                             .padding([.top, .leading, .bottom])
                         }
-                        .frame(maxWidth: .infinity)
                         .frame(height: 200)
                         
                     }
+                    .border(Color.green)
                 }
                     
             }
-            .onAppear {
-//                for key in self.filteredData.keys {
-//                    self.filteredValDict[key] = false
-//                }
-//                print(filteredValDict)
-            }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, alignment: .leading)
             ScrollView {
-                    VStack(spacing: 20){
-                            ForEach(filteredResults.keys.sorted(), id: \.self) { key in
-                                Text("\(key)")
-                                    .font(.system(.title)).bold()
-                                PieChaetView(values: convertToPercentage( [Double(filteredResults[key]?["Passed"] ?? 0), Double(filteredResults[key]?["Failed"] ?? 0)]), labelOffset: 70, colorArry: determineColor(dict: filteredResults, key: key) )
+                LazyVGrid(columns: col) {
+                    ForEach(filteredResults.keys.sorted(), id: \.self) { key in
+                        VStack(spacing: 20){
+                            Text("\(key)")
+                                .font(.system(.title)).bold()
+                            PieChaetView(values: convertToPercentage( [Double(filteredResults[key]?["Passed"] ?? 0), Double(filteredResults[key]?["Failed"] ?? 0)]), labelOffset: 70, colorArry: determineColor(dict: filteredResults, key: key) )
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 300, alignment: .center)
                                     .padding()
                                
-                                HStack(alignment: .center) {
-                                    ForEach(0..<2, id:\.self) {i in
-                                        HStack {
-                                            RoundedRectangle(cornerRadius: 5.0)
-                                                .fill(colorDict[i])
-                                                .frame(width: 20, height: 20)
-                                            Text("\(colorDict[i] == Color.red ? "Failed": "Passed"): \(testNums(data: filteredResults[key] ?? ["Passed": 0], color: colorDict[i]))")
-                                        }
+                            HStack(alignment: .center) {
+                                ForEach(0..<2, id:\.self) {i in
+                                    HStack {
+                                        RoundedRectangle(cornerRadius: 5.0)
+                                            .fill(colorDict[i])
+                                            .frame(width: 20, height: 20)
+                                        Text("\(colorDict[i] == Color.red ? "Failed": "Passed"): \(testNums(data: filteredResults[key] ?? ["Passed": 0], color: colorDict[i]))")
                                     }
                                     
                                 }
-                                
+                                .padding([.bottom])
+                                    
                             }
-
+                            .overlay(Divider(), alignment: .bottom)
                         }
+                                
+                    }
                 }
             }
+            .frame(maxWidth: .infinity)
+        }
             .frame(maxWidth: .infinity)
           
             

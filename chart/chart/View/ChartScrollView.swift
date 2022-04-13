@@ -11,7 +11,7 @@ struct ChartScrollView: View {
     @Binding var filteredData: [String: [String:Int]]
     let data: [String: [String: Int]]
     let col = [
-        GridItem(.adaptive(minimum: 450)),
+        GridItem(.adaptive(minimum: 350)),
     ]
     var body: some View {
         ScrollView {
@@ -22,7 +22,7 @@ struct ChartScrollView: View {
                         Text("\(key)")
                             .font(.system(.title)).bold()
                         ChartView(data: [key: data[key] ?? ["passed": 0]])
-                            .overlay(Divider(), alignment: .bottom)
+                            
                     }
                     
                 }

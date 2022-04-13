@@ -28,16 +28,18 @@ struct ChartView: View {
             
                 .padding()
                 HStack(alignment: .center){
-                ForEach(0..<values.count, id:\.self) {i in
-                    HStack {
-                        RoundedRectangle(cornerRadius: 5.0)
-                            .fill(colorDict[i])
-                            .frame(width: 20, height: 20)
-                        Text("\(colorDict[i] == Color.red ? "Failed": "Passed"): \(Int(values[i]))")
+                    ForEach(0..<values.count, id:\.self) {i in
+                        HStack {
+                            RoundedRectangle(cornerRadius: 5.0)
+                                .fill(colorDict[i])
+                                .frame(width: 20, height: 20)
+                            Text("\(colorDict[i] == Color.red ? "Failed": "Passed"): \(Int(values[i]))")
+                        }
+                        
                     }
                     .padding([.bottom])
                 }
-                }
+                .overlay(Divider(), alignment: .bottom)
             }
                         
         }
