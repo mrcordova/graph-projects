@@ -84,7 +84,7 @@ struct ContentView: View {
                     Text("Data not found \(searchResult.description)")
                 }
             }
-            .frame(width: 450, height: 500)
+            .frame(minWidth: 450, minHeight: 450)
         }
         
     }

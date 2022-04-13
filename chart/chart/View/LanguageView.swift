@@ -17,6 +17,7 @@ struct LanguageView: View {
     @State private var filteredData:[String: [String:Int]]
     @State private var filteredValDict: [String: Bool]
     
+
     
     
     init(data: [String: [String:Int]], menuTitle: String){
@@ -33,7 +34,9 @@ struct LanguageView: View {
     var body: some View {
         VStack{
             FilterView(showMenu: $showMenu, checked: $checked, filteredData: $filteredData, filteredValDict: $filteredValDict, menuTitle: menuTitle, data: data)
+        
             ChartScrollView(filteredData: $filteredData,data: data)
+           
         }
     }
 }

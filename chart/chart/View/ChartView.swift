@@ -35,6 +35,7 @@ struct ChartView: View {
                             .frame(width: 20, height: 20)
                         Text("\(colorDict[i] == Color.red ? "Failed": "Passed"): \(Int(values[i]))")
                     }
+                    .padding([.bottom])
                 }
                 }
             }

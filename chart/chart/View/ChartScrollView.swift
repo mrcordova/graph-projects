@@ -10,16 +10,23 @@ import SwiftUI
 struct ChartScrollView: View {
     @Binding var filteredData: [String: [String:Int]]
     let data: [String: [String: Int]]
+    let col = [
+        GridItem(.adaptive(minimum: 450)),
+    ]
     var body: some View {
         ScrollView {
-            VStack(spacing: 20){
+            LazyVGrid(columns: col) {
+                
                 ForEach(filteredData.keys.sorted(), id: \.self) { key in
-                    Text("\(key)")
-                        .font(.system(.title)).bold()
-                    ChartView(data: [key: data[key] ?? ["passed": 0]])
-                    Text("\(String(describing: data[key] ?? ["Passed": 0]))")
-                        .overlay(Divider(), alignment: .bottom)
+                    VStack(spacing: 20){
+                        Text("\(key)")
+                            .font(.system(.title)).bold()
+                        ChartView(data: [key: data[key] ?? ["passed": 0]])
+                            .overlay(Divider(), alignment: .bottom)
+                    }
+                    
                 }
+                
             }
         }
         .frame(maxWidth: .infinity)
