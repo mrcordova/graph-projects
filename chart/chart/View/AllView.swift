@@ -95,6 +95,7 @@ struct AllView: View {
                                                 
                                                 temp["\(failedTest.title), \(failedTest.language)"]?["Failed"]! += 1
                                                 
+                                                
                                             }
                                         }
                                         filteredResults = temp
@@ -126,7 +127,7 @@ struct AllView: View {
                             ForEach(filteredResults.keys.sorted(), id: \.self) { key in
                                 Text("\(key)")
                                     .font(.system(.title)).bold()
-                                PieChaetView(values: convertToPercentage( [Double(filteredResults[key]?["Failed"] ?? 0), Double(filteredResults[key]?["Passed"] ?? 0)]), labelOffset: 70, colorArry: [Color.green, Color.red])
+                                PieChaetView(values: convertToPercentage( [Double(filteredResults[key]?["Passed"] ?? 0), Double(filteredResults[key]?["Failed"] ?? 0)]), labelOffset: 70, colorArry: determineColor(dict: filteredResults, key: key) )
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 300, alignment: .center)
                                     .padding()
@@ -179,9 +180,10 @@ func testNums(data: [String: Int], color: Color) -> Int {
     }
     return data["Passed"] ?? 0
 }
-//func determineColor(dict: [String: Int], idx: Int) -> Color {
-//    if dict == "Passed" {
-//        return Color.green
-//    }
-//    return Color.red
-//}
+func determineColor(dict: [String: [String: Int]], key: String) -> [Color] {
+    if dict[key]?["Passed"] ?? 0 > dict[key]?["Failed"] ?? 0{
+        return [Color.green, Color.red]
+    }
+    
+    return [ Color.red, Color.green]
+}
