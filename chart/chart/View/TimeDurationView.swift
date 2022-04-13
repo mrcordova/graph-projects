@@ -65,6 +65,8 @@ func calculateTimeRange(data: [String: [String: Int]]) -> [String: [String: Int]
         }
     }
   
+//    print(Dictionary(grouping: rangeDict.sorted{Int($0.key) ?? 0 < Int($1.key) ?? 0}){$0.key})
+//    print(rangeDict)
     return rangeDict
     
 }

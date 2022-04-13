@@ -1,8 +1,8 @@
 //
-//  chartData.swift
+//  ChartData.swift
 //  chart
 //
-//  Created by Noah Cordova on 4/1/22.
+//  Created by Noah Cordova on 4/13/22.
 //
 
 import Foundation
@@ -38,5 +38,3 @@ func load() -> ChartData {
         fatalError("\(error)")
     }
 }
-
-

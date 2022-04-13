@@ -49,6 +49,10 @@ struct ContentView: View {
         
         VStack {
             HStack {
+                Button("All") {
+                    searchResult = 5
+                    filteredDict = filteredResults
+                }
                 Button("Title") {
                     searchResult = 3
                     filteredDict = filterForParameters(filteredResults: filteredResults, searchResult: searchResult)
@@ -63,10 +67,7 @@ struct ContentView: View {
                     filteredDict = filterForParameters(filteredResults: filteredResults, searchResult: searchResult)
 
                 }
-                Button("All") {
-                    searchResult = 5
-                    filteredDict = filteredResults
-                }
+                
             }
             .padding()
             
