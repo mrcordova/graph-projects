@@ -75,7 +75,7 @@ struct ContentView: View {
                 case 4:
                     LanguageView(data: filteredDict, menuTitle: "Language")
                 case 3:
-                    TitleView(data: filteredDict, menuTitle: "Title")
+                    TitleView(data: filteredDict, menuTitle: "Title", searchLabel: "Title")
                 case 2:
                     TimeDurationView(data: filteredDict, menuTitle: "Time Ranges")
                 case 5:

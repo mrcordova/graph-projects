@@ -51,7 +51,7 @@ struct ChartView: View {
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        TitleView(data: ["test":["type": 0]], menuTitle: "Tile")
+        TitleView(data: ["test":["type": 0]], menuTitle: "Tile", searchLabel: "HOLDER")
     }
 }
 

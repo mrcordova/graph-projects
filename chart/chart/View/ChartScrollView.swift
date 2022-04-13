@@ -10,6 +10,7 @@ import SwiftUI
 struct ChartScrollView: View {
     @Binding var filteredData: [String: [String:Int]]
     let data: [String: [String: Int]]
+    let searchLabel: String
     let col = [
         GridItem(.adaptive(minimum: 350)),
     ]
@@ -19,7 +20,7 @@ struct ChartScrollView: View {
                 
                 ForEach(filteredData.keys.sorted(), id: \.self) { key in
                     VStack(spacing: 20){
-                        Text("\(key)")
+                        Text("\(searchLabel): \(key)")
                             .font(.system(.title)).bold()
                         ChartView(data: [key: data[key] ?? ["passed": 0]])
                             
@@ -36,6 +37,6 @@ struct ChartScrollView: View {
 struct ChartScrollView_Previews: PreviewProvider {
     @State static var filteredDict = ["test": [":type": 0]]
     static var previews: some View {
-        ChartScrollView(filteredData: $filteredDict, data: [:])
+        ChartScrollView(filteredData: $filteredDict, data: [:], searchLabel: "HOLDER")
     }
 }

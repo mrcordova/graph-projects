@@ -15,7 +15,7 @@ struct TimeDurationView: View {
         self.menuTitle = menuTitle
     }
     var body: some View {
-        TitleView(data: convertedValues, menuTitle: menuTitle)
+        TitleView(data: convertedValues, menuTitle: menuTitle, searchLabel: "Time")
     }
 }
 
