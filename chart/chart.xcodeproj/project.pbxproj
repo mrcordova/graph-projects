@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8316612C2800E8DD00A12EED /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316612B2800E8DD00A12EED /* ChartView.swift */; };
 		8320ADE528078B67000BFF3B /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8320ADE428078B67000BFF3B /* ChartData.swift */; };
+		8320ADE828078D54000BFF3B /* DataSet.json in Resources */ = {isa = PBXBuildFile; fileRef = 8320ADE728078D54000BFF3B /* DataSet.json */; };
 		832113932805383B0009FC96 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832113922805383B0009FC96 /* FilterView.swift */; };
 		83211395280541490009FC96 /* ChartScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83211394280541490009FC96 /* ChartScrollView.swift */; };
 		83252F4A27F7A060000DAF9A /* chartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83252F4927F7A060000DAF9A /* chartApp.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		8316612B2800E8DD00A12EED /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		8320ADE428078B67000BFF3B /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
+		8320ADE728078D54000BFF3B /* DataSet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DataSet.json; sourceTree = "<group>"; };
 		832113922805383B0009FC96 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		83211394280541490009FC96 /* ChartScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartScrollView.swift; sourceTree = "<group>"; };
 		83252F4627F7A060000DAF9A /* chart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8320ADE628078D22000BFF3B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8320ADE728078D54000BFF3B /* DataSet.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		83252F3D27F7A060000DAF9A = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		83252F4827F7A060000DAF9A /* chart */ = {
 			isa = PBXGroup;
 			children = (
+				8320ADE628078D22000BFF3B /* Resources */,
 				83340C7327F90853004775E9 /* View */,
 				83252F5827F7C042000DAF9A /* Model */,
 				83252F4927F7A060000DAF9A /* chartApp.swift */,
@@ -184,6 +195,7 @@
 			files = (
 				83252F5127F7A062000DAF9A /* Preview Assets.xcassets in Resources */,
 				83252F4E27F7A062000DAF9A /* Assets.xcassets in Resources */,
+				8320ADE828078D54000BFF3B /* DataSet.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
