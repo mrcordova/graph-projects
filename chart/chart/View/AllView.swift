@@ -98,7 +98,7 @@ struct AllView: View {
                                             }
                                         }
                                         filteredResults = temp
-                                        print(filteredResults)
+                                     
                                         
                                        
                                     }
@@ -126,13 +126,20 @@ struct AllView: View {
                             ForEach(filteredResults.keys.sorted(), id: \.self) { key in
                                 Text("\(key)")
                                     .font(.system(.title)).bold()
-                                PieChaetView(values: [Double(filteredResults[key]?["Failed"] ?? 0), Double(filteredResults[key]?["Passed"] ?? 0)], labelOffset: 70, colorArry: [Color.green, Color.red])
+                                PieChaetView(values: convertToPercentage( [Double(filteredResults[key]?["Failed"] ?? 0), Double(filteredResults[key]?["Passed"] ?? 0)]), labelOffset: 70, colorArry: [Color.green, Color.red])
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 300, alignment: .center)
                                     .padding()
                                
                                 HStack(alignment: .center) {
-                                    
+                                    ForEach(0..<2, id:\.self) {i in
+                                        HStack {
+                                            RoundedRectangle(cornerRadius: 5.0)
+                                                .fill(colorDict[i])
+                                                .frame(width: 20, height: 20)
+                                            Text("\(colorDict[i] == Color.red ? "Failed": "Passed"): \(testNums(data: filteredResults[key] ?? ["Passed": 0], color: colorDict[i]))")
+                                        }
+                                    }
                                     
                                 }
                                 
@@ -172,3 +179,9 @@ func testNums(data: [String: Int], color: Color) -> Int {
     }
     return data["Passed"] ?? 0
 }
+//func determineColor(dict: [String: Int], idx: Int) -> Color {
+//    if dict == "Passed" {
+//        return Color.green
+//    }
+//    return Color.red
+//}
