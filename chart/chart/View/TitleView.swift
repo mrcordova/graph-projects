@@ -47,21 +47,4 @@ struct TitleView_Previews: PreviewProvider {
     }
 }
 
-//func setValues(with data: [String: [String:Int]]) -> [Double] {
-//          var tempArry: [Double] = [0,0]
-//        if (data.index(forKey: "15") != nil) {
-//            return [Double(data["15"]?["Passed"] ?? 0), Double(data["15"]?["Failed"] ?? 0)]
-//        }
-//        _ = data.mapValues{
-//               tempArry[0] += Double($0["Passed"] ?? 0)
-//               tempArry[1] += Double($0["Failed"] ?? 0)
-//           }
-//    
-//          return tempArry
-//
-//}
-//
-//func convertToPercentage(_ values: [Double]) -> [Double] {
-//    let totalVal = values.reduce(0,+)
-//    return [(values[0]/totalVal)*100, (values[1]/totalVal)*100]
-//}
+

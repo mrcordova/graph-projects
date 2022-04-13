@@ -116,7 +116,7 @@ struct AllView: View {
                         .frame(height: 200)
                         
                     }
-                    .border(Color.green)
+                  
                 }
                     
             }
