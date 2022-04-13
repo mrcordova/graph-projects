@@ -8,131 +8,6 @@
 import SwiftUI
 
 struct AllView: View {
-//    let data: [String: [String: Int]]
-//    @State var filteredDict: [[String: [String: Int]]]
-//    let failedTestDetailsArry = chartData.results?[0].testDetails
-//    let passedTestDetailsArry = chartData.results?[1].testDetails
-//    @State var values: [Double]
-//    @State var colorDict: [Color]
-//    @State var checked: Bool = false
-//    @State var showMenu: Bool = false
-//    @State var labels: [Int: String]
-//
-//    init(data: [String: [String: Int]] ){
-//        self.filteredDict = []
-//        self.data = data
-//
-//        self.values = [Double(passedTestDetailsArry?.count ?? 0),Double(failedTestDetailsArry?.count ?? 0)]
-//        self.colorDict = [Color.green, Color.red]
-//        self.labels = [3: "Title", 4: "Language", 2: "Time"]
-//
-//    }
-//    var body: some View {
-//        VStack{
-//            HStack {
-//                Text("Filter")
-//                        .padding(.horizontal)
-//                        .overlay(Divider(), alignment: .trailing)
-//                ForEach(filteredDict, id: \.self) { arr in
-//                        ForEach(arr.keys.sorted(), id: \.self){ key in
-//                            Button(formatMenu(arr.first?.value["type"] ?? 0, labels)) {
-//                                labels[arr.first?.value["type"] ?? 0] = key
-//
-//
-//                                let formatter = DateFormatter()
-//                                formatter.dateFormat = "h:mm a"
-//                                var finalFailedCount = 0
-//                                var finalPassedCount = 0
-//                                for failedTest in failedTestDetailsArry ?? [] {
-//                                    let timeStrArry = failedTest.timeDuration.components(separatedBy: " to ")
-//                                    let startDateTime = formatter.date(from: timeStrArry[0])
-//                                    let endDateTime = formatter.date(from: timeStrArry[1])
-//                                    let delta = (Int(endDateTime?.timeIntervalSinceReferenceDate ?? 0.0) - Int(startDateTime?.timeIntervalSinceReferenceDate ?? 0.0))/60
-//                                    if (failedTest.title == labels[3] || labels[3] == "Title") && (failedTest.language == labels[4] || labels[4] == "Language") && (delta <= Int(labels[2] ?? "failed") ?? -1 || labels[2] == "Time"){
-//                                        finalFailedCount += 1
-//                                    }
-//                                }
-//                                for passedTest in passedTestDetailsArry ?? [] {
-//                                    let timeStrArry = passedTest.timeDuration.components(separatedBy: " to ")
-//                                    let startDateTime = formatter.date(from: timeStrArry[0])
-//                                    let endDateTime = formatter.date(from: timeStrArry[1])
-//                                    let delta = (Int(endDateTime?.timeIntervalSinceReferenceDate ?? 0.0) - Int(startDateTime?.timeIntervalSinceReferenceDate ?? 0.0))/60
-//                                    if (passedTest.title == labels[3] || labels[3] == "Title") && (passedTest.language == labels[4] || labels[4] == "Language") && (delta <= Int(labels[2] ?? "failed") ?? -1 || labels[2] == "Time"){
-//                                        finalPassedCount += 1
-//                                    }
-//                                }
-//                                if finalPassedCount < finalFailedCount {
-//                                    colorDict[0] = Color.red
-//                                    colorDict[1] = Color.green
-//                                } else {
-//                                    colorDict[0] = Color.green
-//                                    colorDict[1] = Color.red
-//                                }
-//                                values = [Double(finalPassedCount), Double(finalFailedCount)]
-//                                values = values.sorted(by: >)
-//                                if values[0] == 0 && values[1] == 0 {
-//                                    values[0] = 1
-//                                    values[1] = 1
-//                                    colorDict[0] = Color.blue
-//                                    colorDict[1] = Color.blue
-//                                }
-//
-//                            }
-//                            .popover(isPresented: $showMenu) {
-//                                ScrollView {
-//                                    VStack {
-//                                        ForEach(Array(data.keys.sorted().enumerated()) , id: \.element){ idx, key in
-//                                            Toggle(isOn: $checked) {
-//                                                Text("\(Int(key) == nil ? key : key + "m")")
-//                                            }
-//                                            .toggleStyle(CheckboxToggleStyle())
-//                                            .frame(maxWidth: .infinity, alignment: .leading)
-//                                            .onChange(of: checked) {newValue in
-//                                               print(key)
-//
-//                                            }
-//                                        }
-//                                    }
-//                                    .frame(width: 100, alignment: .leading)
-//                                    .padding([.top, .leading, .bottom])
-//                                }
-//                                .frame(maxWidth: .infinity)
-//                                .frame(height: 200)
-//                            }
-//                            .frame(maxWidth: .infinity, alignment: .leading)
-//                            }
-//
-//                        }
-//
-//
-//                }
-//                .padding(.trailing)
-//            }.onAppear {
-//                var tempArr: [[String: [String: Int]]] = []
-//                for idx in 2..<5 {
-//                    let tempDict = calculateTimeRange(data:  filterForParameters(filteredResults: data, searchResult: idx))
-//                    tempArr.append(tempDict)
-//                }
-//                self.filteredDict = tempArr
-//
-//            }
-//        VStack{
-//        ChartView(data: data)
-//            .frame(width: 300, height: 300)
-//            HStack(alignment: .center){
-//            ForEach(0..<values.count, id:\.self) {i in
-//                HStack {
-//                    RoundedRectangle(cornerRadius: 5.0)
-//                        .fill(colorDict[i])
-//                        .frame(width: 20, height: 20)
-//                    Text("\(colorDict[i] == Color.red ? "Failed": "Passed"): \(Int(values[i]))")
-//                }
-//            }
-//            }
-//
-//        }
-//    }
-//
     let data: [String: [String: Int]]
    
     @State private var checked: [[Bool]]
@@ -140,7 +15,11 @@ struct AllView: View {
     @State private var filteredData:[String: [String:Int]]
     @State private var filteredValDict: [String: Bool]
     @State private var filteredDict : [[String: [String: Int]]]
+    @State private var filteredResults: [String: [String: Int]]
     var labels: [Int: String]
+    let failedTestDetailsArry = chartData.results?[0].testDetails
+    let passedTestDetailsArry = chartData.results?[1].testDetails
+    
     init(data: [String: [String:Int]]){
         
         self.data = data
@@ -152,7 +31,7 @@ struct AllView: View {
         self.filteredValDict = [:]
         self.labels =  [0: "Title", 1: "Language"]
         _showMenu = State(initialValue: [Bool](repeating: false, count: labels.count))
-      
+        self.filteredResults = ["All":["Passed": 95, "Failed": 5]]
     }
     var body: some View {
         VStack{
@@ -178,6 +57,47 @@ struct AllView: View {
                                         filteredValDict[key] = !(filteredValDict[key] ?? false)
                                         self.filteredData =  data.filter{(filteredValDict[$0.key] ?? false)}
                                         
+                                        var tempDict: [String: [String:[String: Int]]] = ["Title": [:], "Language": [:]]
+                                        for (key, val) in filteredData {
+                                            if val["type"] == 3 {
+                                                tempDict["Title"]?["\(key)"] = val
+                                            } else if val["type"] == 4 {
+                                                tempDict["Language"]?["\(key)"] = val
+                                            }
+                                        }
+                                        let titleDict = tempDict["Title"]
+                                        let langDict = tempDict["Language"]
+                                        
+                                        var temp: [String: [String: Int]] = [:]
+                                        
+                                        for passedTest in passedTestDetailsArry ?? [] {
+                                            if (titleDict?[passedTest.title] != nil || titleDict?.count == 0) && (langDict?[passedTest.language] != nil || langDict?.count == 0) {
+                                        
+                                                if temp["\(passedTest.title), \(passedTest.language)"]?["Passed"] == nil {
+                                                    
+                                                    temp["\(passedTest.title), \(passedTest.language)"] = ["Passed": 0, "Failed": 0]
+                                                }
+                                                
+                                                temp["\(passedTest.title), \(passedTest.language)"]?["Passed"]! += 1
+                                                
+                                            }
+                                        }
+                                        for failedTest in failedTestDetailsArry ?? [] {
+                                            if (titleDict?[failedTest.title] != nil || titleDict?.count == 0) && (langDict?[failedTest.language] != nil || langDict?.count == 0) {
+                      
+                                                if temp["\(failedTest.title), \(failedTest.language)"]?["Failed"] == nil {
+                                                    
+                                                    temp["\(failedTest.title), \(failedTest.language)"] = ["Passed": 0, "Failed": 0]
+                                                }
+                                                
+                                                temp["\(failedTest.title), \(failedTest.language)"]?["Failed"]! += 1
+                                                
+                                            }
+                                        }
+                                        filteredResults = temp
+                                        print(filteredResults)
+                                        
+                                       
                                     }
                                 }
                             }
@@ -200,14 +120,20 @@ struct AllView: View {
             .frame(maxWidth: .infinity)
             ScrollView {
                 VStack(spacing: 20){
-                    ForEach(filteredDict.indices, id: \.self){idx in
-                        ForEach(filteredDict[idx].keys.sorted(), id: \.self) { key in
-                            Text("\(key)")
-                                .font(.system(.title)).bold()
-                            ChartView(data: [key: filteredDict[idx][key] ?? ["passed": 0]])
-                            Text("\(String(describing: filteredDict[idx][key] ?? ["Passed": 0]))")
-                                .overlay(Divider(), alignment: .bottom)
-                        }
+//                    ForEach(filteredDict.indices, id: \.self){idx in
+//                        ForEach(filteredDict[idx].keys.sorted(), id: \.self) { key in
+//                            Text("\(key)")
+//                                .font(.system(.title)).bold()
+//                            ChartView(data: [key: filteredDict[idx][key] ?? ["passed": 0]])
+//                            Text("\(String(describing: filteredDict[idx][key] ?? ["Passed": 0]))")
+//                                .overlay(Divider(), alignment: .bottom)
+//                        }
+//                    }
+                    ForEach(filteredResults.keys.sorted(), id: \.self) { key in
+                        Text("\(key)")
+                            .font(.system(.title)).bold()
+                        PieChaetView(filteredData: $filteredResults, data: data)
+
                     }
                 }
             }
