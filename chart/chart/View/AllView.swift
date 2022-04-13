@@ -16,6 +16,8 @@ struct AllView: View {
     @State private var filteredValDict: [String: Bool]
     @State private var filteredDict : [[String: [String: Int]]]
     @State private var filteredResults: [String: [String: Int]]
+    @State var colorDict: [Color]
+    
     var labels: [Int: String]
     let failedTestDetailsArry = chartData.results?[0].testDetails
     let passedTestDetailsArry = chartData.results?[1].testDetails
@@ -32,6 +34,7 @@ struct AllView: View {
         self.labels =  [0: "Title", 1: "Language"]
         _showMenu = State(initialValue: [Bool](repeating: false, count: labels.count))
         self.filteredResults = ["All":["Passed": 95, "Failed": 5]]
+        self.colorDict = [Color.green, Color.red]
     }
     var body: some View {
         VStack{
@@ -119,22 +122,23 @@ struct AllView: View {
             }
             .frame(maxWidth: .infinity)
             ScrollView {
-                VStack(spacing: 20){
-//                    ForEach(filteredDict.indices, id: \.self){idx in
-//                        ForEach(filteredDict[idx].keys.sorted(), id: \.self) { key in
-//                            Text("\(key)")
-//                                .font(.system(.title)).bold()
-//                            ChartView(data: [key: filteredDict[idx][key] ?? ["passed": 0]])
-//                            Text("\(String(describing: filteredDict[idx][key] ?? ["Passed": 0]))")
-//                                .overlay(Divider(), alignment: .bottom)
-//                        }
-//                    }
-                    ForEach(filteredResults.keys.sorted(), id: \.self) { key in
-                        Text("\(key)")
-                            .font(.system(.title)).bold()
-                        PieChaetView(filteredData: $filteredResults, data: data)
+                    VStack(spacing: 20){
+                            ForEach(filteredResults.keys.sorted(), id: \.self) { key in
+                                Text("\(key)")
+                                    .font(.system(.title)).bold()
+                                PieChaetView(values: [Double(filteredResults[key]?["Failed"] ?? 0), Double(filteredResults[key]?["Passed"] ?? 0)], labelOffset: 70, colorArry: [Color.green, Color.red])
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 300, alignment: .center)
+                                    .padding()
+                               
+                                HStack(alignment: .center) {
+                                    
+                                    
+                                }
+                                
+                            }
 
-                    }
+                        }
                 }
             }
             .frame(maxWidth: .infinity)
@@ -145,7 +149,7 @@ struct AllView: View {
         
         
     }
-}
+
     
 
 
@@ -161,54 +165,10 @@ func formatMenu(_ type: Int, _ labels: [Int: String]) -> String {
     return menu ?? "Failed Location"
 }
 
-func calculateIdx(idx: Int) -> Int {
-    var idxPLus =  idx+1
-    if idxPLus != 1 {
-        idxPLus += 2
-    }
-    return idxPLus
-}
-//func setValsAndLabels(values: Binding<[Double]>, colorDict: [Color], failedTestDetailsArry: [TestDetail], passedTestDetailsArry:[TestDetail], labels: [Int: String] ) {
-//    let formatter = DateFormatter()
-//    formatter.dateFormat = "h:mm a"
-//    var finalFailedCount = 0
-//    var finalPassedCount = 0
-//    for failedTest in failedTestDetailsArry ?? [] {
-//        let timeStrArry = failedTest.timeDuration.components(separatedBy: " to ")
-//        let startDateTime = formatter.date(from: timeStrArry[0])
-//        let endDateTime = formatter.date(from: timeStrArry[1])
-//        let delta = (Int(endDateTime?.timeIntervalSinceReferenceDate ?? 0.0) - Int(startDateTime?.timeIntervalSinceReferenceDate ?? 0.0))/60
-//        if (failedTest.title == labels[3] || labels[3] == "Title") && (failedTest.language == labels[4] || labels[4] == "Language") && (delta <= Int(labels[2] ?? "failed") ?? -1 || labels[2] == "Time"){
-//            finalFailedCount += 1
-//        }
-//    }
-//    for passedTest in passedTestDetailsArry ?? [] {
-//        let timeStrArry = passedTest.timeDuration.components(separatedBy: " to ")
-//        let startDateTime = formatter.date(from: timeStrArry[0])
-//        let endDateTime = formatter.date(from: timeStrArry[1])
-//        let delta = (Int(endDateTime?.timeIntervalSinceReferenceDate ?? 0.0) - Int(startDateTime?.timeIntervalSinceReferenceDate ?? 0.0))/60
-//        if (passedTest.title == labels[3] || labels[3] == "Title") && (passedTest.language == labels[4] || labels[4] == "Language") && (delta <= Int(labels[2] ?? "failed") ?? -1 || labels[2] == "Time"){
-//            finalPassedCount += 1
-//        }
-//    }
-//    if finalPassedCount < finalFailedCount {
-//        colorDict[0] = Color.red
-//        colorDict[1] = Color.green
-//    } else {
-//        colorDict[0] = Color.green
-//        colorDict[1] = Color.red
-//    }
-//    values = [Double(finalPassedCount), Double(finalFailedCount)]
-//    values = values.sorted(by: >)
-//    if values[0] == 0 && values[1] == 0 {
-//        values[0] = 1
-//        values[1] = 1
-//        colorDict[0] = Color.blue
-//        colorDict[1] = Color.blue
-//    }
-//}
 
-//            for searchResult in 2..<5 {
-//                self.filteredDict.append(filterForParameters(filteredResults: self.data, searchResult: searchResult))
-//            }
-//            self.filteredDict[0] = calculateTimeRange(data: self.filteredDict[0])
+func testNums(data: [String: Int], color: Color) -> Int {
+    if color == Color.red {
+        return data["Failed"] ?? 0
+    }
+    return data["Passed"] ?? 0
+}

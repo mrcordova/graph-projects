@@ -21,25 +21,6 @@ struct ChartView: View {
     }
     var body: some View {
         VStack {
-//            HStack {
-//            Text("Filter")
-//                    .padding(.horizontal)
-//                    .overlay(Divider(), alignment: .trailing)
-//
-//            Menu("\(menu)") {
-//                ForEach((Int(data.first?.key ?? "failed") == nil) ? data.keys.sorted(): data.keys.sorted(by: {Int($0) ?? 0 < Int($1) ?? 0}) , id: \.self){ key in
-//                    Button("\(Int(key) == nil ? key : key + "m")") {
-//                        values = [Double(data[key]?["Passed"] ?? 0), Double(data[key]?["Failed"] ?? 0)]
-//                        values = values.sorted(by: >)
-//                        colorDict[0] = values[0] == Double(data[key]?["Passed"] ?? 0) ? Color.green : Color.red
-//                        colorDict[1] = colorDict[0] == Color.green ? Color.red : Color.green
-//                        menu = Int(key) == nil ? key : key + "m"
-//
-//                        }
-//                    }
-//                }
-//            .frame(width: 250, height: 100)
-//            }
             VStack{
                 PieChaetView(values: convertToPercentage(values), labelOffset: 70.0, colorArry: colorDict)
                     .frame(maxWidth: .infinity)

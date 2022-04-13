@@ -57,7 +57,6 @@ struct ContentView: View {
                 Button("Language") {
                     searchResult = 4
                     filteredDict =  filterForParameters(filteredResults: filteredResults, searchResult: searchResult)
-//                    print(filteredDict)
                 }
                 Button("Time Duration") {
                     searchResult = 2
