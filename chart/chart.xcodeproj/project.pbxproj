@@ -26,6 +26,10 @@
 		83340C7127F9048C004775E9 /* Sector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83340C7027F9048C004775E9 /* Sector.swift */; };
 		83340C7527F90866004775E9 /* SectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83340C7427F90866004775E9 /* SectorView.swift */; };
 		83340C7727F90BD3004775E9 /* PieChaetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83340C7627F90BD3004775E9 /* PieChaetView.swift */; };
+		835BDFCD2808A7470031AA58 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835BDFCC2808A7470031AA58 /* LineChartView.swift */; };
+		835BDFCF2808AD480031AA58 /* LineShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835BDFCE2808AD480031AA58 /* LineShape.swift */; };
+		835BDFD12808B6AC0031AA58 /* YaxisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835BDFD02808B6AC0031AA58 /* YaxisView.swift */; };
+		835BDFD32808B9C80031AA58 /* XaxisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835BDFD22808B9C80031AA58 /* XaxisView.swift */; };
 		83F1EE5727FD0150004B2FC5 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F1EE5627FD0150004B2FC5 /* Result.swift */; };
 		83F1EE5927FD0169004B2FC5 /* TestDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F1EE5827FD0169004B2FC5 /* TestDetails.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +56,10 @@
 		83340C7027F9048C004775E9 /* Sector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sector.swift; sourceTree = "<group>"; };
 		83340C7427F90866004775E9 /* SectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorView.swift; sourceTree = "<group>"; };
 		83340C7627F90BD3004775E9 /* PieChaetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChaetView.swift; sourceTree = "<group>"; };
+		835BDFCC2808A7470031AA58 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		835BDFCE2808AD480031AA58 /* LineShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineShape.swift; sourceTree = "<group>"; };
+		835BDFD02808B6AC0031AA58 /* YaxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YaxisView.swift; sourceTree = "<group>"; };
+		835BDFD22808B9C80031AA58 /* XaxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XaxisView.swift; sourceTree = "<group>"; };
 		83F1EE5627FD0150004B2FC5 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		83F1EE5827FD0169004B2FC5 /* TestDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +130,7 @@
 				83F1EE5827FD0169004B2FC5 /* TestDetails.swift */,
 				8320ADE428078B67000BFF3B /* ChartData.swift */,
 				8320ADED2807C440000BFF3B /* CurrentChart.swift */,
+				835BDFCE2808AD480031AA58 /* LineShape.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -140,6 +149,9 @@
 				83211394280541490009FC96 /* ChartScrollView.swift */,
 				8320ADE92807AD58000BFF3B /* BarChartView.swift */,
 				8320ADEB2807B2AF000BFF3B /* BarView.swift */,
+				835BDFCC2808A7470031AA58 /* LineChartView.swift */,
+				835BDFD02808B6AC0031AA58 /* YaxisView.swift */,
+				835BDFD22808B9C80031AA58 /* XaxisView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -226,12 +238,16 @@
 				83340C7727F90BD3004775E9 /* PieChaetView.swift in Sources */,
 				8328D2E627FE7296002C8B26 /* AllView.swift in Sources */,
 				83F1EE5727FD0150004B2FC5 /* Result.swift in Sources */,
+				835BDFCF2808AD480031AA58 /* LineShape.swift in Sources */,
 				83252F4A27F7A060000DAF9A /* chartApp.swift in Sources */,
+				835BDFD12808B6AC0031AA58 /* YaxisView.swift in Sources */,
 				83211395280541490009FC96 /* ChartScrollView.swift in Sources */,
 				83340C7127F9048C004775E9 /* Sector.swift in Sources */,
+				835BDFCD2808A7470031AA58 /* LineChartView.swift in Sources */,
 				8320ADEE2807C440000BFF3B /* CurrentChart.swift in Sources */,
 				832113932805383B0009FC96 /* FilterView.swift in Sources */,
 				8328D2EC27FE774A002C8B26 /* TitleView.swift in Sources */,
+				835BDFD32808B9C80031AA58 /* XaxisView.swift in Sources */,
 				8320ADEA2807AD58000BFF3B /* BarChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

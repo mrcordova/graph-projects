@@ -27,7 +27,7 @@ struct BarView: View {
                 }
                 VStack {
                     Spacer()
-                    Text("\((value/totalValue)*100, specifier: "%.1F")%")
+                    Text("\(convertSingleValue(num:value, total: totalValue), specifier: "%.1F")%")
                         .font(.footnote)
                         .foregroundColor(.white)
                         .fontWeight(.bold)
@@ -42,4 +42,9 @@ struct BarView_Previews: PreviewProvider {
     static var previews: some View {
         BarView(value: 95, maxValue: 95, fullBarHeight: 95*0.90, totalValue: 100, color: Color.green)
     }
+}
+
+func convertSingleValue(num: Double, total: Double) -> Double {
+    let percentageVal = 100.0
+    return (num/total) * percentageVal
 }

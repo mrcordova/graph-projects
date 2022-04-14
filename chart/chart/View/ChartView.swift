@@ -39,6 +39,11 @@ struct ChartView: View {
                         .frame(maxWidth: 200)
                         .frame(height: 300, alignment: .center)
                         .padding()
+                case "Line Chart":
+                    LineChartView(data: values)
+                        .frame(maxWidth: 400)
+                        .frame(height: 300, alignment: .center)
+                        .padding()
                 default:
                     PieChaetView(values: convertToPercentage(values), labelOffset: 70.0, colorArry: pieColorDict)
                         .frame(maxWidth: .infinity)
