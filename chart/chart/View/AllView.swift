@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AllView: View {
-    let data: [String: [String: Int]]
+    @EnvironmentObject var currentChart: CurrentChart
+    
    
     @State private var checked: [[Bool]]
     @State private var showMenu : [Bool]
@@ -17,13 +18,16 @@ struct AllView: View {
     @State private var filteredDict : [[String: [String: Int]]]
     @State private var filteredResults: [String: [String: Int]]
     @State var colorDict: [Color]
+    @State var showChartMenu: Bool = false
     
+    let data: [String: [String: Int]]
     var labels: [Int: String]
     let failedTestDetailsArry = chartData.results?[0].testDetails
     let passedTestDetailsArry = chartData.results?[1].testDetails
     let col = [
         GridItem(.adaptive(minimum: 350)),
     ]
+    let chartChoices : [String] = ["Pie Chart", "Bar Chart"]
     
     init(data: [String: [String:Int]]){
         
@@ -118,6 +122,27 @@ struct AllView: View {
                     }
                   
                 }
+                Spacer()
+                Button(action: {
+                    showChartMenu = true
+                }) {
+                    Image(systemName: "plus")
+                }
+                .popover(isPresented: $showChartMenu){
+                    VStack {
+                        ForEach(Array(chartChoices.enumerated()), id: \.element){ i, chart in
+                            Button("\(chart)") {
+                                currentChart.selection = chart
+                            }
+                           .buttonStyle(PlainButtonStyle())
+                           .padding([.bottom], 4)
+                        }
+                    }
+                  
+                    .padding()
+                }
+                .padding([.trailing])
+                .buttonStyle(BorderedButtonStyle())
                     
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -127,11 +152,26 @@ struct AllView: View {
                         VStack(spacing: 20){
                             Text("\(key)")
                                 .font(.system(.title)).bold()
-                            PieChaetView(values: convertToPercentage( [Double(filteredResults[key]?["Passed"] ?? 0), Double(filteredResults[key]?["Failed"] ?? 0)]), labelOffset: 70, colorArry: determineColor(dict: filteredResults, key: key) )
+                            
+                            switch currentChart.selection {
+                            case "Pie Chart":
+                                pieChart(filteredResults: filteredResults, key: key)
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 300, alignment: .center)
                                     .padding()
-                               
+                                    
+                            case "Bar Chart":
+                                BarChartView(values: convertToPercentage([Double(filteredResults[key]?["Passed"] ?? 0), Double(filteredResults[key]?["Failed"] ?? 0)]), colorArry: determineColor(dict: filteredResults, key: key))
+                                    .frame(maxWidth: 200)
+                                    .frame(height: 300, alignment: .center)
+                                    .padding()
+                            default:
+                                pieChart(filteredResults: filteredResults, key: key)
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 300, alignment: .center)
+                                    .padding()
+                            }
+                            
                             HStack(alignment: .center) {
                                 ForEach(0..<2, id:\.self) {i in
                                     HStack {
@@ -199,3 +239,11 @@ func determineSingleColor(dict: [String: [String: Int]], key: String) -> Color {
     
     return Color.red
 }
+
+func pieChart(filteredResults: [String: [String:Int]], key: String) -> PieChaetView {
+    let values = convertToPercentage([Double(filteredResults[key]?["Passed"] ?? 0), Double(filteredResults[key]?["Failed"] ?? 0)])
+    let colorArr = determineColor(dict: filteredResults, key: key)
+    return PieChaetView(values: values, labelOffset: 70, colorArry: colorArr)
+}
+
+//pieChart(values: [Double(filteredResults[key]?["Passed"] ?? 0), Double(filteredResults[key]?["Failed"] ?? 0)], labelOffset: 70, colorArr: determineColor(dict: filteredResults, key: key))

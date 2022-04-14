@@ -9,10 +9,11 @@ import SwiftUI
 
 
 struct ChartView: View {
-    let data: [String: [String: Int]]
+    @EnvironmentObject var currentChart: CurrentChart
     @State var values: [Double]
     @State var colorDict: [Color]
     @State var pieColorDict: [Color]
+    let data: [String: [String: Int]]
     let searchLabel: String
    
     init(data: [String: [String:Int]], searchLabel: String) {
@@ -21,22 +22,30 @@ struct ChartView: View {
         self.colorDict = [Color.green, Color.red]
         self.searchLabel = searchLabel
         self.pieColorDict = colorOrder(with: data)
-        print(pieColorDict)
-        print(values)
+        
        
     }
     var body: some View {
         VStack {
             VStack{
-                PieChaetView(values: convertToPercentage(values), labelOffset: 70.0, colorArry: pieColorDict)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 300, alignment: .center)
-                    .padding()
-                // BarChartView here
-//                BarChartView(values: values, colorArry: pieColorDict)
-//                    .frame(maxWidth: 200)
-//                    .frame(height: 300, alignment: .center)
-//                    .padding()
+                switch currentChart.selection {
+                case "Pie Chart":
+                    PieChaetView(values: convertToPercentage(values), labelOffset: 70.0, colorArry: pieColorDict)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 300, alignment: .center)
+                        .padding()
+                case "Bar Chart":
+                    BarChartView(values: values, colorArry: pieColorDict)
+                        .frame(maxWidth: 200)
+                        .frame(height: 300, alignment: .center)
+                        .padding()
+                default:
+                    PieChaetView(values: convertToPercentage(values), labelOffset: 70.0, colorArry: pieColorDict)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 300, alignment: .center)
+                        .padding()
+                       
+                }
                 HStack(alignment: .center){
                     ForEach(0..<values.count, id:\.self) {i in
                         HStack {

@@ -41,10 +41,11 @@ let colors = [
 
 
 struct ContentView: View {
-    @State var searchResult: Int
     var filteredResults = filterResults()
+    @State var searchResult: Int
     @State var filteredDict: [String: [String: Int]]
-
+    @StateObject private var currentChart = CurrentChart()
+  
     var body: some View {
         
         VStack {
@@ -86,13 +87,14 @@ struct ContentView: View {
             }
             .frame(minWidth: 450, minHeight: 450)
         }
+        .environmentObject(currentChart)
         
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(searchResult: 5, filteredDict: ["test": ["type": 0]])
+        ContentView(searchResult: 5, filteredDict: ["test": ["type": 0]]).environmentObject(CurrentChart())
     }
 }
 

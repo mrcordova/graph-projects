@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct FilterView: View {
+    @EnvironmentObject var currentChart: CurrentChart
     @Binding var showMenu: Bool
     @Binding  var checked: [Bool]
     @Binding  var filteredData:[String: [String:Int]]
     @Binding var filteredValDict: [String: Bool]
+    @State var showChartMenu: Bool = false
     let menuTitle: String
     let data: [String: [String: Int]]
-    @State var showChartMenu: Bool = false
-    
+    let chartChoices : [String] = ["Pie Chart", "Bar Chart"]
     
     var body: some View {
         HStack {
@@ -57,14 +58,12 @@ struct FilterView: View {
             }
             .popover(isPresented: $showChartMenu){
                 VStack {
-                    Button("Pie Chart") {
-                        print("Pie Chart")
+                    ForEach(Array(chartChoices.enumerated()), id: \.element){ i, chart in
+                        Button("\(chart)") {
+                            currentChart.selection = chart
+                        }
+                       .buttonStyle(PlainButtonStyle())
                     }
-                    .buttonStyle(PlainButtonStyle())
-                    Button("Bar Chart") {
-                        print("Bar Chart")
-                    }
-                    .buttonStyle(PlainButtonStyle())
                 }
               
                 .padding()
