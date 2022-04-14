@@ -10,6 +10,8 @@
 		8316612C2800E8DD00A12EED /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316612B2800E8DD00A12EED /* ChartView.swift */; };
 		8320ADE528078B67000BFF3B /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8320ADE428078B67000BFF3B /* ChartData.swift */; };
 		8320ADE828078D54000BFF3B /* DataSet.json in Resources */ = {isa = PBXBuildFile; fileRef = 8320ADE728078D54000BFF3B /* DataSet.json */; };
+		8320ADEA2807AD58000BFF3B /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8320ADE92807AD58000BFF3B /* BarChartView.swift */; };
+		8320ADEC2807B2AF000BFF3B /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8320ADEB2807B2AF000BFF3B /* BarView.swift */; };
 		832113932805383B0009FC96 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832113922805383B0009FC96 /* FilterView.swift */; };
 		83211395280541490009FC96 /* ChartScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83211394280541490009FC96 /* ChartScrollView.swift */; };
 		83252F4A27F7A060000DAF9A /* chartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83252F4927F7A060000DAF9A /* chartApp.swift */; };
@@ -31,6 +33,8 @@
 		8316612B2800E8DD00A12EED /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		8320ADE428078B67000BFF3B /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		8320ADE728078D54000BFF3B /* DataSet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DataSet.json; sourceTree = "<group>"; };
+		8320ADE92807AD58000BFF3B /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
+		8320ADEB2807B2AF000BFF3B /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		832113922805383B0009FC96 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		83211394280541490009FC96 /* ChartScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartScrollView.swift; sourceTree = "<group>"; };
 		83252F4627F7A060000DAF9A /* chart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +135,8 @@
 				8316612B2800E8DD00A12EED /* ChartView.swift */,
 				832113922805383B0009FC96 /* FilterView.swift */,
 				83211394280541490009FC96 /* ChartScrollView.swift */,
+				8320ADE92807AD58000BFF3B /* BarChartView.swift */,
+				8320ADEB2807B2AF000BFF3B /* BarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83252F4C27F7A060000DAF9A /* ContentView.swift in Sources */,
+				8320ADEC2807B2AF000BFF3B /* BarView.swift in Sources */,
 				8320ADE528078B67000BFF3B /* ChartData.swift in Sources */,
 				83F1EE5927FD0169004B2FC5 /* TestDetails.swift in Sources */,
 				8316612C2800E8DD00A12EED /* ChartView.swift in Sources */,
@@ -221,6 +228,7 @@
 				83340C7127F9048C004775E9 /* Sector.swift in Sources */,
 				832113932805383B0009FC96 /* FilterView.swift in Sources */,
 				8328D2EC27FE774A002C8B26 /* TitleView.swift in Sources */,
+				8320ADEA2807AD58000BFF3B /* BarChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +356,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = chart/chart.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -376,7 +384,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = chart/chart.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

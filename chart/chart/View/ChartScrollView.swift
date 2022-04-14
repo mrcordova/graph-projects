@@ -38,6 +38,6 @@ struct ChartScrollView: View {
 struct ChartScrollView_Previews: PreviewProvider {
     @State static var filteredDict = ["test": [":type": 0]]
     static var previews: some View {
-        ChartScrollView(filteredData: $filteredDict, data: [:], searchLabel: "HOLDER")
+        ChartScrollView(filteredData: $filteredDict, data: ["tese":["trrt":0]], searchLabel: "HOLDER")
     }
 }
