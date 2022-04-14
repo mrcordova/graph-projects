@@ -22,7 +22,7 @@ struct ChartScrollView: View {
                     VStack(spacing: 20){
                         Text("\(searchLabel): \(key)")
                             .font(.system(.title)).bold()
-                        ChartView(data: [key: data[key] ?? ["passed": 0]])
+                        ChartView(data: [key: data[key] ?? ["passed": 0]], searchLabel: searchLabel)
                             
                     }
                     
@@ -31,6 +31,7 @@ struct ChartScrollView: View {
             }
         }
         .frame(maxWidth: .infinity)
+        .overlay(Divider(), alignment: .top)
     }
 }
 

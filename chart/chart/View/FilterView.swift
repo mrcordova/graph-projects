@@ -14,7 +14,7 @@ struct FilterView: View {
     @Binding var filteredValDict: [String: Bool]
     let menuTitle: String
     let data: [String: [String: Int]]
-    
+    @State var showChartMenu: Bool = false
     
     
     var body: some View {
@@ -36,7 +36,6 @@ struct FilterView: View {
                             .toggleStyle(CheckboxToggleStyle())
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .onChange(of: checked[idx]) {newValue in
-                                
                                 filteredValDict[key] = !(filteredValDict[key] ?? false)
                                 self.filteredData =  data.filter{(filteredValDict[$0.key] ?? false) }
                                 
@@ -50,8 +49,31 @@ struct FilterView: View {
                 .frame(height: 200)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Button(action: {
+                showChartMenu = true
+            }) {
+                Image(systemName: "plus")
+            }
+            .popover(isPresented: $showChartMenu){
+                VStack {
+                    Button("Pie Chart") {
+                        print("Pie Chart")
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    Button("Bar Chart") {
+                        print("Bar Chart")
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+              
+                .padding()
+            }
+            .padding([.trailing])
+            .buttonStyle(BorderedButtonStyle())
         }
         .frame(maxWidth: .infinity)
+        
         
     }
 }

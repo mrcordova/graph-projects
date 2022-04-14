@@ -12,17 +12,21 @@ struct ChartView: View {
     let data: [String: [String: Int]]
     @State var values: [Double]
     @State var colorDict: [Color]
+    @State var pieColorDict: [Color]
+    let searchLabel: String
    
-    init(data: [String: [String:Int]]) {
+    init(data: [String: [String:Int]], searchLabel: String) {
         self.data = data
         self.values = setValues(with: data)
         self.colorDict = [Color.green, Color.red]
+        self.searchLabel = searchLabel
+        self.pieColorDict = colorOrder(with: data)
        
     }
     var body: some View {
         VStack {
             VStack{
-                PieChaetView(values: convertToPercentage(values), labelOffset: 70.0, colorArry: colorDict)
+                PieChaetView(values: convertToPercentage(values), labelOffset: 70.0, colorArry: pieColorDict)
                     .frame(maxWidth: .infinity)
                     .frame(height: 300, alignment: .center)
             
@@ -74,3 +78,18 @@ func convertToPercentage(_ values: [Double]) -> [Double] {
     return [(values[0]/totalVal)*100, (values[1]/totalVal)*100]
 }
 
+func colorOrder(with data: [String: [String:Int]]) -> [Color] {
+    var tempArry: [String:Double] = ["Passed":0, "Failed":0]
+  if (data.index(forKey: "15") != nil) {
+      return [Color.green, Color.red]
+  }
+  _ = data.mapValues{
+         tempArry["Passed"]? += Double($0["Passed"] ?? 0)
+         tempArry["Failed"]? += Double($0["Failed"] ?? 0)
+     }
+
+    if tempArry["Passed"] ?? 0 < tempArry["Failed"] ?? 0 {
+        return [Color.red, Color.green]
+    }
+    return [Color.green, Color.red]
+}

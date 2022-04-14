@@ -152,6 +152,7 @@ struct AllView: View {
                 }
             }
             .frame(maxWidth: .infinity)
+            .overlay(Divider(), alignment: .top)
         }
             .frame(maxWidth: .infinity)
           
@@ -190,4 +191,11 @@ func determineColor(dict: [String: [String: Int]], key: String) -> [Color] {
     }
     
     return [ Color.red, Color.green]
+}
+func determineSingleColor(dict: [String: [String: Int]], key: String) -> Color {
+    if dict[key]?["Passed"] ?? 0 > dict[key]?["Failed"] ?? 0{
+        return Color.green
+    }
+    
+    return Color.red
 }

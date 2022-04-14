@@ -65,7 +65,6 @@ struct ContentView: View {
                 Button("Time Duration") {
                     searchResult = 2
                     filteredDict = filterForParameters(filteredResults: filteredResults, searchResult: searchResult)
-
                 }
                 
             }
@@ -73,12 +72,12 @@ struct ContentView: View {
             
             HStack {
                 switch searchResult {
-                case 4:
-                    LanguageView(data: filteredDict, menuTitle: "Language")
-                case 3:
-                    TitleView(data: filteredDict, menuTitle: "Title", searchLabel: "Title")
                 case 2:
                     TimeDurationView(data: filteredDict, menuTitle: "Time Ranges")
+                case 3:
+                    TitleView(data: filteredDict, menuTitle: "Title", searchLabel: "Title")
+                case 4:
+                    LanguageView(data: filteredDict, menuTitle: "Language")
                 case 5:
                     AllView(data: filteredResults)
                 default:
