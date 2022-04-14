@@ -11,6 +11,7 @@ struct BarView: View {
     var value : Double
     var maxValue: Double
     var fullBarHeight: Double
+    var totalValue: Double
     // pass color
     var color : Color
     var body: some View {
@@ -25,11 +26,11 @@ struct BarView: View {
                         .frame(height: CGFloat(barHeight), alignment: .trailing)
                 }
                 VStack {
-//                    Spacer()
-//                    Text("\(value, specifier: "%.0F")")
-//                        .font(.footnote)
-//                        .foregroundColor(.white)
-//                        .fontWeight(.bold)
+                    Spacer()
+                    Text("\((value/totalValue)*100, specifier: "%.1F")%")
+                        .font(.footnote)
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
                 }
             }
         }
@@ -39,6 +40,6 @@ struct BarView: View {
 
 struct BarView_Previews: PreviewProvider {
     static var previews: some View {
-        BarView(value: 95, maxValue: 95, fullBarHeight: 95*0.90, color: Color.green)
+        BarView(value: 95, maxValue: 95, fullBarHeight: 95*0.90, totalValue: 100, color: Color.green)
     }
 }

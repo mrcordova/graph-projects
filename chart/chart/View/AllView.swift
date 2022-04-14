@@ -246,4 +246,4 @@ func pieChart(filteredResults: [String: [String:Int]], key: String) -> PieChaetV
     return PieChaetView(values: values, labelOffset: 70, colorArry: colorArr)
 }
 
-//pieChart(values: [Double(filteredResults[key]?["Passed"] ?? 0), Double(filteredResults[key]?["Failed"] ?? 0)], labelOffset: 70, colorArr: determineColor(dict: filteredResults, key: key))
+

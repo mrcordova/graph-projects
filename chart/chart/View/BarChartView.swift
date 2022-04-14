@@ -15,6 +15,7 @@ struct BarChartView: View {
         GeometryReader { gr in
             let fullBarHeight = gr.size.height * 0.90
             let maxValue = values.max()
+            let totalVal = values.reduce(0,+)
             
             VStack{
                 HStack(spacing: 0){
@@ -23,6 +24,7 @@ struct BarChartView: View {
                             value: val,
                             maxValue: maxValue ?? 0,
                             fullBarHeight: Double(fullBarHeight),
+                            totalValue: totalVal,
                             color: i == 0 ? Color.green : Color.red
                         )
                         
