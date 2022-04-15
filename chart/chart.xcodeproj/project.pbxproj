@@ -24,6 +24,7 @@
 		8328D2EC27FE774A002C8B26 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8328D2EB27FE774A002C8B26 /* TitleView.swift */; };
 		8328D2EE27FE775E002C8B26 /* TimeDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8328D2ED27FE775E002C8B26 /* TimeDurationView.swift */; };
 		83316B182809DFB90050E5FB /* CapsuleChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83316B172809DFB90050E5FB /* CapsuleChartView.swift */; };
+		83316B1A280A16520050E5FB /* BubbleChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83316B19280A16520050E5FB /* BubbleChartView.swift */; };
 		83340C7127F9048C004775E9 /* Sector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83340C7027F9048C004775E9 /* Sector.swift */; };
 		83340C7527F90866004775E9 /* SectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83340C7427F90866004775E9 /* SectorView.swift */; };
 		83340C7727F90BD3004775E9 /* PieChaetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83340C7627F90BD3004775E9 /* PieChaetView.swift */; };
@@ -55,6 +56,7 @@
 		8328D2EB27FE774A002C8B26 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		8328D2ED27FE775E002C8B26 /* TimeDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDurationView.swift; sourceTree = "<group>"; };
 		83316B172809DFB90050E5FB /* CapsuleChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleChartView.swift; sourceTree = "<group>"; };
+		83316B19280A16520050E5FB /* BubbleChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChartView.swift; sourceTree = "<group>"; };
 		83340C7027F9048C004775E9 /* Sector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sector.swift; sourceTree = "<group>"; };
 		83340C7427F90866004775E9 /* SectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorView.swift; sourceTree = "<group>"; };
 		83340C7627F90BD3004775E9 /* PieChaetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChaetView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				835BDFD02808B6AC0031AA58 /* YaxisView.swift */,
 				835BDFD22808B9C80031AA58 /* XaxisView.swift */,
 				83316B172809DFB90050E5FB /* CapsuleChartView.swift */,
+				83316B19280A16520050E5FB /* BubbleChartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83252F4C27F7A060000DAF9A /* ContentView.swift in Sources */,
+				83316B1A280A16520050E5FB /* BubbleChartView.swift in Sources */,
 				8320ADEC2807B2AF000BFF3B /* BarView.swift in Sources */,
 				8320ADE528078B67000BFF3B /* ChartData.swift in Sources */,
 				83F1EE5927FD0169004B2FC5 /* TestDetails.swift in Sources */,

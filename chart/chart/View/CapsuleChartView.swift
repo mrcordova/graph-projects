@@ -15,6 +15,7 @@ struct CapsuleChartView: View {
     private let foregroundColor: Color
     private let colorArry: [Color]
     private let total: Double
+    
     init(value: Double,
          maxValue: Double,
          colorArry: [Color],
