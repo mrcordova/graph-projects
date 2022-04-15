@@ -27,7 +27,7 @@ struct AllView: View {
     let col = [
         GridItem(.adaptive(minimum: 350)),
     ]
-    let chartChoices : [String] = ["Pie Chart", "Bar Chart", "Line Chart"]
+    let chartChoices : [String] = ["Pie Chart", "Bar Chart", "Line Chart", "Capsule Chart"]
     @State var total: Int
     init(data: [String: [String:Int]]){
         
@@ -171,6 +171,11 @@ struct AllView: View {
                                     .padding()
                             case "Line Chart":
                                 LineChartView(data: createValArray(filteredResults: filteredResults, key: key) )
+                                    .frame(maxWidth: 400)
+                                    .frame(height: 300, alignment: .center)
+                                    .padding()
+                            case "Capsule Chart":
+                                CapsuleChartView(value: createValArray(filteredResults: filteredResults, key: key).min() ?? 0, maxValue: createValArray(filteredResults: filteredResults, key: key).max() ?? 0, colorArry: determineColor(dict: filteredResults, key: key))
                                     .frame(maxWidth: 400)
                                     .frame(height: 300, alignment: .center)
                                     .padding()

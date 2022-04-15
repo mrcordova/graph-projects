@@ -85,7 +85,9 @@ struct ContentView: View {
                     Text("Data not found \(searchResult.description)")
                 }
             }
-            .frame(minWidth: 450, minHeight: 450)
+            .frame(minWidth: 450, minHeight: 550)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
         }
         .environmentObject(currentChart)
         
