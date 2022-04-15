@@ -31,9 +31,9 @@ struct XaxisView: View {
                                     .frame(width: 1, height: tickHeight)
                                 Spacer()
                             }
-                            Text("")
-                                .font(.footnote)
-                                .frame(width: labelWidth, height: labelHeight)
+//                            Text("")
+//                                .font(.footnote)
+//                                .frame(width: labelWidth, height: labelHeight)
                         }
                        
                     }

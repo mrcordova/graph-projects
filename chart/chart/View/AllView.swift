@@ -27,7 +27,7 @@ struct AllView: View {
     let col = [
         GridItem(.adaptive(minimum: 350)),
     ]
-    let chartChoices : [String] = ["Pie Chart", "Bar Chart"]
+    let chartChoices : [String] = ["Pie Chart", "Bar Chart", "Line Chart"]
     
     init(data: [String: [String:Int]]){
         
@@ -151,7 +151,9 @@ struct AllView: View {
                     ForEach(filteredResults.keys.sorted(), id: \.self) { key in
                         VStack(spacing: 20){
                             Text("\(key)")
-                                .font(.system(.title)).bold()
+                                .font(.system(.title))
+                                .bold()
+                                .padding([.top])
                             
                             switch currentChart.selection {
                             case "Pie Chart":
@@ -163,6 +165,11 @@ struct AllView: View {
                             case "Bar Chart":
                                 BarChartView(values: convertToPercentage([Double(filteredResults[key]?["Passed"] ?? 0), Double(filteredResults[key]?["Failed"] ?? 0)]), colorArry: determineColor(dict: filteredResults, key: key))
                                     .frame(maxWidth: 200)
+                                    .frame(height: 300, alignment: .center)
+                                    .padding()
+                            case "Line Chart":
+                                LineChartView(data: createValArray(filteredResults: filteredResults, key: key) )
+                                    .frame(maxWidth: 400)
                                     .frame(height: 300, alignment: .center)
                                     .padding()
                             default:
@@ -246,4 +253,7 @@ func pieChart(filteredResults: [String: [String:Int]], key: String) -> PieChaetV
     return PieChaetView(values: values, labelOffset: 70, colorArry: colorArr)
 }
 
+func createValArray(filteredResults: [String: [String:Int]], key: String) -> [Double] {
+    return [Double(filteredResults[key]?["Passed"] ?? 0), Double(filteredResults[key]?["Failed"] ?? 0)]
+}
 

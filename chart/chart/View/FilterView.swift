@@ -63,9 +63,9 @@ struct FilterView: View {
                             currentChart.selection = chart
                         }
                        .buttonStyle(PlainButtonStyle())
+                       .padding([.bottom], 4)
                     }
                 }
-              
                 .padding()
             }
             .padding([.trailing])

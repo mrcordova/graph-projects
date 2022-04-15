@@ -22,6 +22,7 @@ struct ChartScrollView: View {
                     VStack(spacing: 20){
                         Text("\(searchLabel): \(key)")
                             .font(.system(.title)).bold()
+                            .padding([.top])
                         ChartView(data: [key: data[key] ?? ["passed": 0]], searchLabel: searchLabel)
                             
                     }
