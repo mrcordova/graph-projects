@@ -43,7 +43,7 @@ struct CapsuleChartView: View {
                     
                 }
                 Capsule()
-                    .frame(width: self.progress(value: self.value, maxValue: self.maxValue, width: gr.size.width))
+                    .frame(width: self.progress(value: self.value, totalValue: self.total, width: gr.size.width))
                     .foregroundColor(self.foregroundColor)
                 Text("\(convertSingleValue(num:value, total: total), specifier: "%.1f")%")
                     .frame(maxHeight: .infinity, alignment: .center)
@@ -54,8 +54,8 @@ struct CapsuleChartView: View {
         .frame(height: 25)
         .padding(30)
     }
-    private func progress(value: Double, maxValue: Double, width: CGFloat) -> CGFloat {
-        let percentage = value/maxValue
+    private func progress(value: Double, totalValue: Double, width: CGFloat) -> CGFloat {
+        let percentage = value/totalValue
         return width * CGFloat(percentage)
     }
 }
