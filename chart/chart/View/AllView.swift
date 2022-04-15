@@ -85,12 +85,12 @@ struct AllView: View {
                                         for passedTest in passedTestDetailsArry ?? [] {
                                             if (titleDict?[passedTest.title] != nil || titleDict?.count == 0) && (langDict?[passedTest.language] != nil || langDict?.count == 0) {
                       
-                                                if temp["\(titleDict?[passedTest.title] != nil ? passedTest.title : ""), \(langDict?[passedTest.language] != nil ? passedTest.language : "")"]?["Passed"] == nil {
+                                                if temp["\(titleDict?[passedTest.title] != nil ? passedTest.title+"," : "")\(langDict?[passedTest.language] != nil ? passedTest.language : "")"]?["Passed"] == nil {
                                                     
-                                                    temp["\(titleDict?[passedTest.title] != nil ? passedTest.title : ""), \(langDict?[passedTest.language] != nil ? passedTest.language : "")"] = ["Passed": 0, "Failed": 0]
+                                                    temp["\(titleDict?[passedTest.title] != nil ? passedTest.title+"," : "")\(langDict?[passedTest.language] != nil ? passedTest.language : "")"] = ["Passed": 0, "Failed": 0]
                                                 }
                                                 
-                                                temp["\(titleDict?[passedTest.title] != nil ? passedTest.title : ""), \(langDict?[passedTest.language] != nil ? passedTest.language : "")"]?["Passed"]! += 1
+                                                temp["\(titleDict?[passedTest.title] != nil ? passedTest.title+"," : "")\(langDict?[passedTest.language] != nil ? passedTest.language : "")"]?["Passed"]! += 1
                                                 
                                                 
                                             }
@@ -98,12 +98,12 @@ struct AllView: View {
                                         for failedTest in failedTestDetailsArry ?? [] {
                                             if (titleDict?[failedTest.title] != nil || titleDict?.count == 0) && (langDict?[failedTest.language] != nil || langDict?.count == 0) {
                       
-                                                if temp["\(titleDict?[failedTest.title] != nil ? failedTest.title : ""), \(langDict?[failedTest.language] != nil ? failedTest.language : "")"]?["Failed"] == nil {
+                                                if temp["\(titleDict?[failedTest.title] != nil ? failedTest.title+"," : "")\(langDict?[failedTest.language] != nil ? failedTest.language : "")"]?["Failed"] == nil {
                                                     
-                                                    temp["\(titleDict?[failedTest.title] != nil ? failedTest.title : ""), \(langDict?[failedTest.language] != nil ? failedTest.language : "")"] = ["Passed": 0, "Failed": 0]
+                                                    temp["\(titleDict?[failedTest.title] != nil ? failedTest.title+"," : "")\(langDict?[failedTest.language] != nil ? failedTest.language : "")"] = ["Passed": 0, "Failed": 0]
                                                 }
                                                 
-                                                temp["\(titleDict?[failedTest.title] != nil ? failedTest.title : ""), \(langDict?[failedTest.language] != nil ? failedTest.language : "")"]?["Failed"]! += 1
+                                                temp["\(titleDict?[failedTest.title] != nil ? failedTest.title+"," : "")\(langDict?[failedTest.language] != nil ? failedTest.language : "")"]?["Failed"]! += 1
                                                 
                                                 
                                             }
