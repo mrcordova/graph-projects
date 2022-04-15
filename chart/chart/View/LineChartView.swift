@@ -13,7 +13,7 @@ struct LineChartView: View {
     init(data: [Double]) {
         self.data = data
         self.arryDat = [[0, data[0]], [0, data[1]]]
-        print(arryDat)
+     
     }
     var body: some View {
         GeometryReader { gr in

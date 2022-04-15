@@ -51,19 +51,26 @@ struct ChartView: View {
                         .padding()
                        
                 }
-                HStack(alignment: .center){
-                    ForEach(0..<values.count, id:\.self) {i in
-                        HStack {
-                            RoundedRectangle(cornerRadius: 5.0)
-                                .fill(colorDict[i])
-                                .frame(width: 20, height: 20)
-                            Text("\(colorDict[i] == Color.red ? "Failed": "Passed"): \(Int(values[i]))")
+                VStack {
+                    HStack(alignment: .center){
+                        ForEach(0..<values.count, id:\.self) {i in
+                            HStack {
+                                RoundedRectangle(cornerRadius: 5.0)
+                                    .fill(colorDict[i])
+                                    .frame(width: 20, height: 20)
+                                Text("\(colorDict[i] == Color.red ? "Failed": "Passed"): \(Int(values[i]))")
+                            }
+                            
                         }
-                        
+                        .padding([.bottom])
                     }
+                    Text("Total: \(values.reduce(0, +), specifier: "%.0f")")
                     .padding([.bottom])
+                    .overlay(Divider(), alignment: .bottom)
+                    
                 }
-                .overlay(Divider(), alignment: .bottom)
+                
+                
             }
                         
         }

@@ -28,7 +28,7 @@ struct AllView: View {
         GridItem(.adaptive(minimum: 350)),
     ]
     let chartChoices : [String] = ["Pie Chart", "Bar Chart", "Line Chart"]
-    
+    @State var total: Int
     init(data: [String: [String:Int]]){
         
         self.data = data
@@ -42,6 +42,8 @@ struct AllView: View {
         _showMenu = State(initialValue: [Bool](repeating: false, count: labels.count))
         self.filteredResults = ["All":["Passed": 95, "Failed": 5]]
         self.colorDict = [Color.green, Color.red]
+        self.total = 0
+        self.total = calculateTotal(values: self.filteredResults , key: "All")
     }
     var body: some View {
         VStack{
@@ -178,23 +180,26 @@ struct AllView: View {
                                     .frame(height: 300, alignment: .center)
                                     .padding()
                             }
-                            
-                            HStack(alignment: .center) {
-                                ForEach(0..<2, id:\.self) {i in
-                                    HStack {
-                                        RoundedRectangle(cornerRadius: 5.0)
-                                            .fill(colorDict[i])
-                                            .frame(width: 20, height: 20)
-                                        Text("\(colorDict[i] == Color.red ? "Failed": "Passed"): \(testNums(data: filteredResults[key] ?? ["Passed": 0], color: colorDict[i]))")
+                            VStack {
+                                HStack(alignment: .center) {
+                                    ForEach(0..<2, id:\.self) {i in
+                                        HStack {
+                                            RoundedRectangle(cornerRadius: 5.0)
+                                                .fill(colorDict[i])
+                                                .frame(width: 20, height: 20)
+                                            Text("\(colorDict[i] == Color.red ? "Failed": "Passed"): \(testNums(data: filteredResults[key] ?? ["Passed": 0], color: colorDict[i]))")
+                                        }
+                                        
                                     }
-                                    
+                                    .padding([.bottom])
+                                        
                                 }
-                                .padding([.bottom])
-                                    
                             }
-                            .overlay(Divider(), alignment: .bottom)
-                        }
+                            Text("Total: \(calculateTotal(values: filteredResults, key: key))")
+                                .padding([.bottom])
+                                .overlay(Divider(), alignment: .bottom)
                                 
+                        }
                     }
                 }
             }
@@ -257,3 +262,13 @@ func createValArray(filteredResults: [String: [String:Int]], key: String) -> [Do
     return [Double(filteredResults[key]?["Passed"] ?? 0), Double(filteredResults[key]?["Failed"] ?? 0)]
 }
 
+func calculateTotal(values: [String : [String:Int]], key: String) -> Int {
+//    print((values["Passed"] ?? 0) + (values["Failed"] ?? 0))
+    return (values[key]?["Passed"] ?? 0) + (values[key]?["Failed"] ?? 0)
+}
+
+extension StringProtocol {
+    subscript(offset: Int) -> Character {
+        self[index(startIndex, offsetBy: offset)]
+    }
+}
