@@ -14,6 +14,7 @@ struct CapsuleChartView: View {
     private let backgroundColor: Color
     private let foregroundColor: Color
     private let colorArry: [Color]
+    private let total: Double
     init(value: Double,
          maxValue: Double,
          colorArry: [Color],
@@ -22,6 +23,7 @@ struct CapsuleChartView: View {
         self.maxValue = maxValue
         self.backgroundEnabled = backgroundEnabled
         self.colorArry = colorArry
+        self.total = maxValue + value
         self.backgroundColor = colorArry[0]
         self.foregroundColor = colorArry[1]
         
@@ -33,7 +35,7 @@ struct CapsuleChartView: View {
                     ZStack{
                         Capsule()
                             .foregroundColor(self.backgroundColor)
-                        Text("\(convertSingleValue(num:maxValue, total: (maxValue+value)), specifier: "%.1f")%")
+                        Text("\(convertSingleValue(num:maxValue, total: total), specifier: "%.1f")%")
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .padding(.horizontal)
                             
@@ -43,7 +45,7 @@ struct CapsuleChartView: View {
                 Capsule()
                     .frame(width: self.progress(value: self.value, maxValue: self.maxValue, width: gr.size.width))
                     .foregroundColor(self.foregroundColor)
-                Text("\(convertSingleValue(num:value, total: (maxValue+value)), specifier: "%.1f")%")
+                Text("\(convertSingleValue(num:value, total: total), specifier: "%.1f")%")
                     .frame(maxHeight: .infinity, alignment: .center)
                     .padding([.horizontal])
                 
