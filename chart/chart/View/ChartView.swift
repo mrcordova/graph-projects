@@ -49,6 +49,11 @@ struct ChartView: View {
                         .frame(maxWidth: 400)
                         .frame(height: 300, alignment: .center)
                         .padding()
+//                case "Bubble Chart":
+//                    BubbleChartView(value: values.min() ?? 0, maxValue: values.max() ?? 0, colorArry: pieColorDict)
+//                        .frame(maxWidth: 400)
+//                        .frame(height: 300, alignment: .bottom)
+//                        .padding()
                 default:
                     PieChaetView(values: convertToPercentage(values), labelOffset: 70.0, colorArry: pieColorDict)
                         .frame(maxWidth: .infinity)

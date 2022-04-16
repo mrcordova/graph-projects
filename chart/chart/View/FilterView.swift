@@ -16,7 +16,7 @@ struct FilterView: View {
     @State var showChartMenu: Bool = false
     let menuTitle: String
     let data: [String: [String: Int]]
-    let chartChoices : [String] = ["Pie Chart", "Bar Chart", "Line Chart", "Capsule Chart"]
+    let chartChoices : [String] = ["Pie Chart", "Bar Chart", "Line Chart", "Capsule Chart", "Bubble Chart"]
     
     var body: some View {
         HStack {

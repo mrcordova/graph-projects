@@ -8,55 +8,68 @@
 import SwiftUI
 
 struct BubbleChartView: View {
-    private let value: Double
-    private let maxValue: Double
+    private var value: Double
+    private var maxValue: Double
     private let backgroundEnabled: Bool
     private let backgroundColor: Color
     private let foregroundColor: Color
     private let colorArry: [Color]
-    private let totalRadius: Double
-    let radius: CGFloat
+    private let total: Double
+    var radius: CGFloat
+    var maxRad: CGFloat
     let pi = Double.pi
     init(value: Double, maxValue: Double, colorArry: [Color], backgroundEnabled: Bool = true){
         self.maxValue = maxValue
         self.value = value
-        self.foregroundColor = Color.red
-        self.backgroundColor = Color.green
-        self.radius = ((value+maxValue)*100)/2
-        self.totalRadius = maxValue/2
         self.colorArry = colorArry
+        self.foregroundColor = colorArry[1]
+        self.backgroundColor = colorArry[0]
+        self.radius = 0
+        self.total = (value + maxValue)
+        self.value = (value/self.total)
+        self.maxValue = (maxValue/self.total)
+        self.maxRad = (self.maxValue/2)
+        self.radius = (self.value/2)
         self.backgroundEnabled = backgroundEnabled
     }
     
     var body: some View {
        
         ZStack {
-            if self.backgroundEnabled {
-                VStack {
-//                    Sector(startAngle: Angle(degrees:0), endAngle: Angle(degrees: 360))
-//                        .padding(4)
-//                        .foregroundColor(.green)
-//                        .cornerRadius(5)
-//                        .frame(width: ((maxValue)/2)*2, height: (maxValue/2)*2)
-                    Circle()
-                        .foregroundColor(.green)
+            GeometryReader{ gr in
+                
+                if self.backgroundEnabled {
+                    VStack {
+//                        Sector(startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 360))
+//                            .foregroundColor(self.backgroundColor)
+//                            .frame(width: (pi * maxRad * maxRad) * gr.size.width)
+                        Circle()
+                            .foregroundColor(self.backgroundColor)
+                            .frame(width: (pi * maxRad * maxRad) * gr.size.width)
+                    }
+//                    .border(.yellow)
+                    .frame(maxWidth: .infinity)
                 }
-            }
-            
-            VStack {
-                Circle()
-                    .foregroundColor(.red)
-                    .frame(width: pi * radius * radius, height: pi * radius * radius)
-//                Sector(startAngle: Angle(degrees:0), endAngle: Angle(degrees: 360))
-//                    .padding(4)
-//                    .foregroundColor(.red)
-//                    .cornerRadius(5)
-//                    .frame(width: (value/2)*2, height: (value/2)*2)
-                        
+               
+                VStack {
+                    
+//                    Sector(startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 360))
+//                        .foregroundColor(self.foregroundColor)
+//                        .frame(width: (pi * radius * radius) * gr.size.width)
+                    Circle()
+                        .foregroundColor(self.foregroundColor)
+                        .frame(width:( pi * radius * radius) * gr.size.width,alignment: .bottom)
+                        .border(.green)
+                            
+                   
+                }
+                .frame(maxWidth: gr.size.width, alignment: .bottom)
+                .border(.brown)
             }
 
         }
-        .frame(height: 100)
+        .frame(height: 300)
+//        .border(.blue)
         .padding(30)
     }
 }
