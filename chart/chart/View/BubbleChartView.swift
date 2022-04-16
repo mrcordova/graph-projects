@@ -28,8 +28,8 @@ struct BubbleChartView: View {
         self.total = (value + maxValue)
         self.value = (value/self.total)
         self.maxValue = (maxValue/self.total)
-        self.maxRad = (self.maxValue/2)
-        self.radius = (self.value/2)
+        self.maxRad = ((self.maxValue)/2)
+        self.radius = ((self.value)/2)
         self.backgroundEnabled = backgroundEnabled
     }
     
@@ -40,42 +40,43 @@ struct BubbleChartView: View {
                 
                 if self.backgroundEnabled {
                     VStack {
-//                        Sector(startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 360))
-//                            .foregroundColor(self.backgroundColor)
-//                            .frame(width: (pi * maxRad * maxRad) * gr.size.width)
-                        Circle()
-                            .foregroundColor(self.backgroundColor)
-                            .frame(width: (pi * maxRad * maxRad) * gr.size.width)
+                        Spacer()
+                        ZStack{
+                            Circle()
+                                .foregroundColor(self.backgroundColor)
+                                .frame(width: ((pi * maxRad * maxRad) * gr.size.width))
+                                .frame(maxHeight: (pi * maxRad * maxRad) * gr.size.height, alignment: .bottom)
+                            Text("\(maxValue * 100, specifier: "%.1f")%")
+                                .frame(alignment: .top)
+                                .padding(.horizontal)
+                        }
+                       
                     }
-//                    .border(.yellow)
                     .frame(maxWidth: .infinity)
                 }
-               
                 VStack {
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .foregroundColor(self.foregroundColor)
+                            .frame(width:( pi * radius * radius) * gr.size.width)
+                            .frame(maxHeight: (pi * radius * radius) * gr.size.height, alignment: .bottom)
+                        Text("\(value * 100, specifier: "%.1f")%")
+                            .frame(alignment: .center)
+                            .padding([.horizontal])
+                    }
                     
-//                    Sector(startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 360))
-//                        .foregroundColor(self.foregroundColor)
-//                        .frame(width: (pi * radius * radius) * gr.size.width)
-                    Circle()
-                        .foregroundColor(self.foregroundColor)
-                        .frame(width:( pi * radius * radius) * gr.size.width,alignment: .bottom)
-                        .border(.green)
-                            
-                   
                 }
-                .frame(maxWidth: gr.size.width, alignment: .bottom)
-                .border(.brown)
+                .frame(maxWidth: gr.size.width, minHeight: gr.size.height)
             }
-
+            .padding(30)
         }
-        .frame(height: 300)
-//        .border(.blue)
-        .padding(30)
+        
     }
 }
 
 struct BubbleChartView_Previews: PreviewProvider {
     static var previews: some View {
-        BubbleChartView(value: 5, maxValue: 95, colorArry: [Color.red, Color.green])
+        BubbleChartView(value: 2, maxValue: 5, colorArry: [Color.red, Color.green])
     }
 }
