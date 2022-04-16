@@ -67,6 +67,7 @@ struct ContentView: View {
                     searchResult = 2
                     filteredDict = filterForParameters(filteredResults: filteredResults, searchResult: searchResult)
                 }
+               
                 
             }
             .padding()

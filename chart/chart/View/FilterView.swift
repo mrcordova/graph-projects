@@ -70,6 +70,17 @@ struct FilterView: View {
             }
             .padding([.trailing])
             .buttonStyle(BorderedButtonStyle())
+           
+            
+            Spacer()
+            Button("Clear") {
+                checked = Array(repeating: false, count: checked.count)
+                filteredData = data
+                for key in self.filteredData.keys {
+                    self.filteredValDict[key] = false
+                }
+            }
+            .padding(.trailing)
         }
         .frame(maxWidth: .infinity)
         

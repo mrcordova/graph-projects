@@ -32,7 +32,10 @@ struct TitleView: View {
     }
     var body: some View {
         VStack {
-            FilterView(showMenu: $showMenu, checked: $checked, filteredData: $filteredData, filteredValDict: $filteredValDict, menuTitle: menuTitle, data: data)
+            HStack{
+                FilterView(showMenu: $showMenu, checked: $checked, filteredData: $filteredData, filteredValDict: $filteredValDict, menuTitle: menuTitle, data: data)
+            }
+            
             ChartScrollView(filteredData: $filteredData, data: data, searchLabel: searchLabel)
                 
         }

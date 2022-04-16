@@ -145,6 +145,15 @@ struct AllView: View {
                 }
                 .padding([.trailing])
                 .buttonStyle(BorderedButtonStyle())
+                
+                Button("Clear") {
+                    checked = Array(repeating: Array(repeating: false, count: checked[0].count), count: checked.count)
+                    filteredResults = ["All":["Passed": 95, "Failed": 5]]
+                    for key in self.filteredData.keys {
+                        self.filteredValDict[key] = false
+                    }
+                }
+                .padding(.trailing)
                     
             }
             .frame(maxWidth: .infinity, alignment: .leading)
