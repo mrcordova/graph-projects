@@ -1,14 +1,14 @@
 //
-//  chartApp.swift
+//  ChartApp.swift
 //  chart
 //
-//  Created by Noah Cordova on 4/1/22.
+//  Created by Noah Cordova on 4/18/22.
 //
 
 import SwiftUI
 
 @main
-struct chartApp: App {
+struct ChartApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(searchResult: 5,  filteredDict: ["test": ["type": 0]])
