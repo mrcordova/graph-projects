@@ -29,8 +29,6 @@ func load() -> ChartData {
     {
         fatalError("Path url: failed")
     }
-
-    
     do {
         let contents = dataSet
         let decoder = JSONDecoder()
