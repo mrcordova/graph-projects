@@ -65,7 +65,7 @@ struct AllView: View {
                                     }
                                     .toggleStyle(CheckboxToggleStyle())
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                    .onChange(of: checked[keyIdx][idx]) {newValue in
+                                    .onChange(of: checked[keyIdx][idx]) { newValue in
                                         filteredValDict[key] = !(filteredValDict[key] ?? false)
                                         self.filteredData =  data.filter{(filteredValDict[$0.key] ?? false)}
                                         

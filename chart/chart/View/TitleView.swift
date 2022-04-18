@@ -35,9 +35,7 @@ struct TitleView: View {
             HStack{
                 FilterView(showMenu: $showMenu, checked: $checked, filteredData: $filteredData, filteredValDict: $filteredValDict, menuTitle: menuTitle, data: data)
             }
-            
             ChartScrollView(filteredData: $filteredData, data: data, searchLabel: searchLabel)
-                
         }
         
            
