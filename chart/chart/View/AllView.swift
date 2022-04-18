@@ -27,7 +27,7 @@ struct AllView: View {
     let col = [
         GridItem(.adaptive(minimum: 350)),
     ]
-    let chartChoices : [String] = ["Pie Chart", "Bar Chart", "Line Chart", "Capsule Chart"]
+    let chartChoices : [String] = ["Pie Chart", "Bar Chart", "Line Chart", "Capsule Chart", "Bubble Chart"]
     @State var total: Int
     init(data: [String: [String:Int]]){
         
@@ -110,8 +110,6 @@ struct AllView: View {
                                         }
                                         
                                         filteredResults = temp
-                                     
-                                        
                                        
                                     }
                                 }
@@ -122,6 +120,7 @@ struct AllView: View {
                         .frame(height: 200)
                         
                     }
+                    
                   
                 }
                 Spacer()
@@ -187,6 +186,11 @@ struct AllView: View {
                                 CapsuleChartView(value: createValArray(filteredResults: filteredResults, key: key).min() ?? 0, maxValue: createValArray(filteredResults: filteredResults, key: key).max() ?? 0, colorArry: determineColor(dict: filteredResults, key: key))
                                     .frame(maxWidth: 400)
                                     .frame(height: 300, alignment: .center)
+                                    .padding()
+                            case "Bubble Chart":
+                                BubbleChartView(value: createValArray(filteredResults: filteredResults, key: key).min() ?? 0, maxValue: createValArray(filteredResults: filteredResults, key: key).max() ?? 0, colorArry: determineColor(dict: filteredResults, key: key))
+                                    .frame(maxWidth: 400)
+                                    .frame(height: 300, alignment: .bottom)
                                     .padding()
                             default:
                                 pieChart(filteredResults: filteredResults, key: key)
